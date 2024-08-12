@@ -1,0 +1,75 @@
+
+<!--mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav" [class.collapsed]="isCollapsed">
+    <mat-toolbar class="sidenav-header" (click)="toggleSidebar()">
+      <img *ngIf="!isCollapsed" src="assets/img/images-removebg-preview.png" class="sidebar-logo"/>
+      <img *ngIf="isCollapsed" src="assets/img/6-removebg-preview.png" class="sidebar-logo collapsed"/>
+    </mat-toolbar>
+    <mat-list>
+      <ng-template #adminTemplate let-item="menuItem">
+        <mat-list-item
+          (click)="toggleActiveItem(item, $event)"
+          [class.active]="item === activeItem"
+          [class.has-children]="item.children.length > 0"
+          class="parent-item"
+          matTooltip="{{item.title}}"
+          matTooltipPosition="right"
+          [matTooltipDisabled]="!isCollapsed">
+          <i class="{{ item.iconClass }}"></i>&nbsp;&nbsp;&nbsp;
+          <span class="menu-title tt-font">{{ item.title }}</span>
+          <mat-icon *ngIf="item.children.length > 0 && !isCollapsed" class="caret" (click)="toggleChildren(item, $event)">
+            {{ item.expanded ? 'expand_more' : 'chevron_right' }}
+          </mat-icon>
+        </mat-list-item>
+        <div *ngIf="item.children.length > 0 && (item.expanded || item.hovered)" class="child-menu">
+          <mat-list>
+            <ng-container *ngFor="let child of getChildren(item)">
+              <ng-template [ngTemplateOutlet]="adminTemplate" [ngTemplateOutletContext]="{ menuItem: child }"></ng-template>
+            </ng-container>
+          </mat-list>
+        </div>
+      </ng-template>
+      <ng-container *ngFor="let item of menuItems">
+        <ng-template [ngTemplateOutlet]="adminTemplate" [ngTemplateOutletContext]="{ menuItem: item }"></ng-template>
+      </ng-container>
+    </mat-list>
+  </mat-sidenav>
+  </mat-sidenav-container-->
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav" [class.collapsed]="isCollapsed">
+      <mat-toolbar class="sidenav-header" (click)="toggleSidebar()">
+        <img *ngIf="!isCollapsed" src="assets/img/images-removebg-preview.png" class="sidebar-logo"/>
+        <img *ngIf="isCollapsed" src="assets/img/6-removebg-preview.png" class="sidebar-logo collapsed"/>
+      </mat-toolbar>
+      <mat-list class="sidebar-list">
+        <ng-template #adminTemplate let-item="menuItem">
+          <mat-list-item
+            (click)="toggleActiveItem(item, $event)"
+            [class.active]="item === activeItem"
+            [class.has-children]="item.children.length > 0"
+            class="parent-item"
+            matTooltip="{{item.title}}"
+            matTooltipPosition="right"
+            [matTooltipDisabled]="!isCollapsed">
+            <i class="{{ item.iconClass }}"></i>&nbsp;&nbsp;&nbsp;
+            <span class="menu-title tt-font">{{ item.title }}</span>
+            <mat-icon *ngIf="item.children.length > 0 && !isCollapsed" class="caret" (click)="toggleChildren(item, $event)">
+              {{ item.expanded ? 'expand_more' : 'chevron_right' }}
+            </mat-icon>
+          </mat-list-item>
+          <div *ngIf="item.children.length > 0 && (item.expanded || item.hovered)" class="child-menu">
+            <mat-list>
+              <ng-container *ngFor="let child of getChildren(item)">
+                <ng-template [ngTemplateOutlet]="adminTemplate" [ngTemplateOutletContext]="{ menuItem: child }"></ng-template>
+              </ng-container>
+            </mat-list>
+          </div>
+        </ng-template>
+        <ng-container *ngFor="let item of menuItems">
+          <ng-template [ngTemplateOutlet]="adminTemplate" [ngTemplateOutletContext]="{ menuItem: item }"></ng-template>
+        </ng-container>
+      </mat-list>
+    </mat-sidenav>
+    </mat-sidenav-container>
+  

@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* General styles */
+.sidenav-container {
+  display: flex;
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+  overflow-y: auto; /* Ensure the sidebar can scroll vertically */
+  background: linear-gradient(145deg, #010a16, #021526);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  transition: width 0.3s;
+  border-radius: 0; /* Remove rounded corners */
+}
+
+.sidenav.collapsed {
+  width: 70px;
+  overflow-y: auto; /* Ensure the sidebar can scroll vertically in collapsed state */
+  border-radius: 0; /* Remove rounded corners */
+}
+
+/* Caret (chevron) styles */
+.parent-item .caret {
+  color: #ffffff;
+}
+
+/* Toolbar styles */
+.mat-toolbar {
+  background-color: #010a16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 50px;
+  border-top-right-radius: 50px; /* Match the sidebar's top-right corner */
+}
+
+.mat-toolbar.collapsed {
+  border-top-right-radius: 50px; /* Match the collapsed sidebar's top-right corner */
+}
+
+/* Sidebar logo */
+.sidebar-logo {
+  transition: width 0.3s, height 0.3s;
+  width: 140px;
+  height: auto;
+  background: #010a16;
+  padding: 10px;
+  border-radius: 50%; /* Keep the logo rounded */
+}
+
+.sidebar-logo.collapsed {
+  width: 30px;
+  height: auto;
+  border-radius: 50%; /* Keep the logo rounded */
+}
+
+.tt-font {
+  font-family: 'Public Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  color: #ffffff;
+}
+
+/* List items */
+.mat-list-item {
+  cursor: pointer;
+  background-color: #062042;
+  padding: 0% 1%;
+  margin: 8px 10px;
+  
+  transition: background-color 0.3s, border-radius 0.3s;
+  border: none; /* Remove border */
+  border-radius: 10px; /* Create a rectangular shape */
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+}
+.mat-list-item:hover {
+  background-color: #9da1a5; /* Darker background color on hover */
+  cursor: pointer;
+}
+
+
+.mat-list-item i {
+  color: #ffffff;
+}
+
+.mat-list-item .menu-title {
+  flex-grow: 1;
+  padding-left: 2px;
+  text-align: left;
+}
+
+/* Parent item styles */
+.parent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.child-menu {
+  padding-left: 2px;
+  background-color: #021526;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+/* Hide text and caret in collapsed state */
+.sidenav.collapsed .menu-title,
+.sidenav.collapsed .caret {
+  display: none;
+}
+
+.sidenav.collapsed .mat-list-item i {
+  margin: 0 auto;
+  font-size: 1.5em; /* Adjust icon size */
+}
+
+.sidenav.collapsed .mat-list-item {
+  justify-content: center;
+  padding: 10px 0; /* Adjust padding to make icons centered */
+  margin: 10px auto; /* Center items in collapsed state */
+}
+
+/* Hover state for child menu */
+.parent-item:hover .child-menu {
+  position: absolute;
+    display: block;
+    width: 97%;
+    height: 35px;
+    margin: 35px 0 0 0;
+    background-color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+
+ 
+}
+
+/* Active item */
+.mat-list-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-right: 4px solid #007bff; /* Adjust the color to match your theme */
+}
+
+/* Child items */
+.child-item {
+  padding-left: 5px;
+}
+
+
+.child-item .caret {
+  right: 8px;
+}
+.sidenav.collapsed .child-menu {
+  display: none;
+}
+.sidenav.collapsed .menu-title,
+.sidenav.collapsed .caret {
+  display: none;
+}
+
+
+/* Custom scrollbar */
+.sidenav::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+
+.sidenav::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3); /* Set the color of the scrollbar thumb */
+  border-radius: 4px; /* Round the edges of the scrollbar thumb */
+  border: none; /* Remove any border */
+}
+
+.sidenav::-webkit-scrollbar-track {
+  background: transparent; /* Set the scrollbar track background to transparent */
+  border: none; /* Remove any border */
+}
+
+/* Smooth transitions */
+.sidenav,
+.child-menu {
+  transition: width 0.3s, padding-left 0.3s, background 0.3s, border-radius 0.3s;
+}
